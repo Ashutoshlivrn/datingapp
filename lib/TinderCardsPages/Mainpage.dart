@@ -236,120 +236,125 @@ class _MainPageState extends State<MainPage> {
           );
   }
 
-  Widget buildSheet(BuildContext context) => DraggableScrollableSheet(
-    initialChildSize: 0.79,
-    minChildSize: 0.5,
-    maxChildSize: 0.79,
-    builder: (_, scrollController) => Container(
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20))
-      ),
-      padding: const  EdgeInsets.fromLTRB( 30,10,30,10 ),
-      child:  SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //  mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              // Align children at the start and end of the row
-              children: <Widget>[
-                const SizedBox(width: 110,),
-                const Text(
-                    "Filters",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    )
-                ),
-                const SizedBox(width: 40,),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                      "Clear",
+  Widget buildSheet(BuildContext context) => AnimatedPadding(
+    
+    padding: EdgeInsets.all(20),
+    duration: Duration(seconds: 2),
+    child: DraggableScrollableSheet(
+      initialChildSize: 0.79,
+      minChildSize: 0.5,
+      maxChildSize: 0.79,
+      builder: (_, scrollController) => Container(
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))
+        ),
+        padding: const  EdgeInsets.fromLTRB( 30,10,30,10 ),
+        child:  SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            //  mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                // Align children at the start and end of the row
+                children: <Widget>[
+                  const SizedBox(width: 110,),
+                  const Text(
+                      "Filters",
                       style: TextStyle(
-                        color: Color(0xffe94057),
-                        fontSize: 16,
+                        fontSize: 24,
                         fontWeight: FontWeight.w700,
                       )
                   ),
-                )
-
-              ],
-            ),
-            const SizedBox(height: 20,),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                  "Interested in",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  )
-              ),
-            ),
-            const SizedBox(height: 20,),
-            SelectGender(),
-            const SizedBox(height: 25,),
-            SizedBox(
-              height: 57,
-              width: MediaQuery.of(context).size.width,
-              child: TextField(
-                onChanged: (value) {
-
-                },
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
-                    label:const  Text('Location',style: TextStyle(color: Colors.grey ),),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    suffixIcon: const Icon(Icons.arrow_forward_ios_rounded,color: Color(0xffe94057),)
-                ),
-              ),
-            ),
-            const SizedBox(height: 20,),
-
-            DistanceSelector(),
-            const SizedBox(height: 20,),
-            AgeSelector(),
-            const SizedBox(height: 10,),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: Container(
-                width: 295,
-                height: 56,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: const Color(0xffe94057)),
-                child: const Center(
-                  child: Text(
-                      "Continue",
-                      style: TextStyle(
+                  const SizedBox(width: 40,),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text(
+                        "Clear",
+                        style: TextStyle(
+                          color: Color(0xffe94057),
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white
-                      )
+                        )
+                    ),
+                  )
+
+                ],
+              ),
+              const SizedBox(height: 20,),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "Interested in",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    )
+                ),
+              ),
+              const SizedBox(height: 20,),
+              SelectGender(),
+              const SizedBox(height: 25,),
+              SizedBox(
+                height: 57,
+                width: MediaQuery.of(context).size.width,
+                child: TextField(
+                  onChanged: (value) {
+
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
+                      label:const  Text('Location',style: TextStyle(color: Colors.grey ),),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      suffixIcon: const Icon(Icons.arrow_forward_ios_rounded,color: Color(0xffe94057),)
                   ),
                 ),
               ),
-            )
+              const SizedBox(height: 20,),
+
+              DistanceSelector(),
+              const SizedBox(height: 20,),
+              AgeSelector(),
+              const SizedBox(height: 10,),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  width: 295,
+                  height: 56,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: const Color(0xffe94057)),
+                  child: const Center(
+                    child: Text(
+                        "Continue",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white
+                        )
+                    ),
+                  ),
+                ),
+              )
 
 
 
 
 
-          ],
+            ],
+          ),
         ),
       ),
     ),
